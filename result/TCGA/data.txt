@@ -1,0 +1,1 @@
+Please download the latent_data and SNF_fused_matrix.csv from https://figshare.com/s/b931139782497d5da6fd.
