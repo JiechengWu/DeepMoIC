@@ -154,7 +154,7 @@ if __name__ == '__main__':
                     os.remove(file)
 
         print('Training finished.')
-        print('The best epoch model is ', best_epoch)
+        print('The best epoch is ', best_epoch)
         DeepGCN_model.load_state_dict(torch.load('../result/{}/model/{}.pkl'.format(args.dataset, best_epoch)))
         test_acc, f1, p, r = test(features, adj, labels, idx_test)
 
