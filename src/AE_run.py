@@ -9,16 +9,16 @@ import torch.utils.data as Data
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--seed', type=int, default=0, help='Random seed, default=0.')
-    parser.add_argument('--path1', '-p1', default='data/TCGA/common_expression_data.csv', type=str, help='The first omics file path.')
-    parser.add_argument('--path2', '-p2', default='data/TCGA/common_cnv_data.csv', type=str, help='The second omics file path.')
+    parser.add_argument('--path1', default='data/TCGA/common_expression_data.csv', type=str, help='The first omics file path.')
+    parser.add_argument('--path2', default='data/TCGA/common_cnv_data.csv', type=str, help='The second omics file path.')
     parser.add_argument('--batchsize', '-bs', type=int, default=64, help='Training batchszie, default: 64.')
     parser.add_argument('--learning_rate', '-lr', type=float, default=0.001, help='Learning rate, default: 0.001.')
-    parser.add_argument('--epoch', '-e', type=int, default=150, help='Training epochs, default: 150.')
-    parser.add_argument('--latent', '-l', type=int, default=1000, help='The latent layer dim, default: 1000.')
+    parser.add_argument('--epoch', type=int, default=150, help='Training epochs, default: 150.')
+    parser.add_argument('--latent', type=int, default=1000, help='The latent layer dim, default: 1000.')
     parser.add_argument('--device', '-d', type=str, choices=['cpu', 'gpu'], default='gpu', help='Training on cpu or gpu, default: gpu.')
-    parser.add_argument('--a', '-a', type=float, default=0.5, help='[0,1], float, weight for the first omics data')
-    parser.add_argument('--b', '-b', type=float, default=0.5, help='[0,1], float, weight for the second omics data.')
-    parser.add_argument('--latent_dim', '-n', type=int, default=100, help='Extract top N features every 10 epochs, default: 100.')
+    parser.add_argument('--a', type=float, default=0.5, help='[0,1], float, weight for the first omics data')
+    parser.add_argument('--b', type=float, default=0.5, help='[0,1], float, weight for the second omics data.')
+    parser.add_argument('--latent_dim', type=int, default=100, help='Extract features dimensionality, default: 100.')
     parser.add_argument('--dataset', type=str, default="TCGA", help='dataset name')
     args = parser.parse_args()
 
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     # change data to a Tensor
     X, Y = data.iloc[:, 1:].values, np.zeros(data.shape[0])
     X_train, Y_train = torch.tensor(X, dtype=torch.float, device=device), torch.tensor(Y, dtype=torch.float, device=device)
-    # train a AE model
+    # train model
     print('Training model')
     Tensor_data = Data.TensorDataset(X_train, Y_train)
     train_loader = Data.DataLoader(Tensor_data, batch_size=args.batchsize, shuffle=True)

@@ -5,17 +5,16 @@ import argparse
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path1', '-p1', default='data/TCGA/common_expression_data.csv', type=str, help='The first omics file name.')
-    parser.add_argument('--path2', '-p2', default='TCGA/common_cnv_data.csv', type=str, help='The second omics file name.')
+    parser.add_argument('--path1', default='data/TCGA/common_expression_data.csv', type=str, help='The first omics file name.')
+    parser.add_argument('--path2', default='data/TCGA/common_cnv_data.csv', type=str, help='The second omics file name.')
     parser.add_argument('--dataset', type=str, default="TCGA", help='dataset name')
-    parser.add_argument('--metric', '-m', type=str, choices=['braycurtis', 'canberra', 'chebyshev', 'cityblock',
+    parser.add_argument('--metric', type=str, choices=['braycurtis', 'canberra', 'chebyshev', 'cityblock',
                         'correlation', 'cosine', 'dice', 'euclidean', 'hamming', 'jaccard', 'kulsinski',
                         'mahalanobis', 'matching', 'minkowski', 'rogerstanimoto', 'russellrao', 'seuclidean',
                         'sokalmichener', 'sokalsneath', 'sqeuclidean', 'wminkowski', 'yule'], default='sqeuclidean',
                         help='Distance metric to compute.')
-    parser.add_argument('--K', '-k', type=int, default=20,
-                        help='(0, N) int, number of neighbors to consider when creating affinity matrix. Default: 20.')
-    parser.add_argument('--mu', '-mu', type=int, default=0.5,
+    parser.add_argument('--k', type=int, default=20, help='(0, N) int, number of neighbors to consider when creating affinity matrix. Default: 20.')
+    parser.add_argument('--mu', type=int, default=0.5,
                         help='(0, 1) float, Normalization factor to scale similarity kernel when constructing affinity matrix. Default: 0.5.')
     args = parser.parse_args()
 
