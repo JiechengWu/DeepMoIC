@@ -1,7 +1,5 @@
 ## DeepMoIC: Multi-Omics Data Integration via Deep Graph Convolutional Networks for Cancer Subtype Classification
 
-![](./framework.png)
-
 ### Quick start
 
 ```
