@@ -54,11 +54,10 @@ if __name__ == '__main__':
     X, Y = data.iloc[:, 1:].values, np.zeros(data.shape[0])
     X_train, Y_train = torch.tensor(X, dtype=torch.float, device=device), torch.tensor(Y, dtype=torch.float, device=device)
     # train a AE model
-    print('Training model...')
+    print('Training model')
     Tensor_data = Data.TensorDataset(X_train, Y_train)
     train_loader = Data.DataLoader(Tensor_data, batch_size=args.batchsize, shuffle=True)
 
-    # initialize a model
     model = AE(in_feas, latent_dim=args.latent_dim, a=args.a, b=args.b)
     model.to(device)
     model.train()
@@ -66,7 +65,7 @@ if __name__ == '__main__':
     model.eval()  # before save and test, fix the variables
     torch.save(model, '../result/{}/AE/AE_model.pkl'.format(args.dataset))
 
-    # load saved model, used for reducing dimensions
+    # load saved model
     print('Get the latent layer output...')
     model = torch.load('../result/{}/AE/AE_model.pkl'.format(args.dataset))
 
@@ -76,6 +75,6 @@ if __name__ == '__main__':
     latent_df = pd.DataFrame(latent_data.detach().cpu().numpy())
     latent_df.insert(0, 'Index', sample_name)
 
-    latent_df.to_csv('../esult/{}/latent_data.csv'.format(args.dataset), header=True, index=False)
+    latent_df.to_csv('../result/{}/latent_data.csv'.format(args.dataset), header=True, index=False)
 
     print('Finished!')

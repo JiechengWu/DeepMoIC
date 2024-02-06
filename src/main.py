@@ -25,7 +25,7 @@ def train(epoch, optimizer, features, adj, labels, idx_train):
     loss_train.backward()
     optimizer.step()
     if (epoch + 1) % 10 == 0:
-        print('Epoch: %.2f, loss train: %.4f, acc train: %.4f' % (epoch + 1, loss_train.item(), acc_train.item()))
+        print('Epoch: %.2f, Loss_train: %.4f, Acc_train: %.4f' % (epoch + 1, loss_train.item(), acc_train.item()))
     return acc_train.item(), loss_train.data.item()
 
 
@@ -150,7 +150,6 @@ if __name__ == '__main__':
             for file in files:
                 name = file.split('\\')[1]
                 epoch_nb = int(name.split('.')[0])
-                # print(file, name, epoch_nb)
                 if epoch_nb != best_epoch:
                     os.remove(file)
 

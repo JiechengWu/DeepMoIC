@@ -2,7 +2,6 @@ import snf
 import pandas as pd
 import numpy as np
 import argparse
-import seaborn as sns
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
