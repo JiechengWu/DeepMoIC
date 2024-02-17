@@ -116,7 +116,7 @@ if __name__ == '__main__':
 
     for i in range(args.n_repeat):
         DeepGCN_model = DeepGCN(nfeat=features.shape[1], nclass=args.nclass, dim=args.hidden,
-                            alpha=args.alpha, lamda=args.lamda, dropout=args.dropout)
+                                alpha=args.alpha, lamda=args.lamda, dropout=args.dropout)
         DeepGCN_model.to(device)
         optimizer = torch.optim.Adam(DeepGCN_model.parameters(), lr=args.learningrate, weight_decay=args.weight_decay)
 
@@ -124,9 +124,9 @@ if __name__ == '__main__':
 
         loss_values = []  
         acc_values = []
-        # record the times with no loss decrease, record the best epoch
+        # record the best epoch
         bad_counter, best_epoch = 0, 0
-        best = 1000  # record the lowest loss value
+        best = 1000
         for epoch in range(args.epochs):
             acc_train, loss_train = train(epoch, optimizer, features, adj, labels, idx_train)
             loss_values.append(loss_train)

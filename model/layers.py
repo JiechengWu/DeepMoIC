@@ -17,9 +17,7 @@ class GCNII(Module):
         if lamda is not None or layer is not None:
             assert lamda is not None and layer is not None
             self.beta = log(lamda / layer + 1)
-
         self.weight1 = Parameter(torch.Tensor(channels, channels))
-
         if shared_weights:
             self.register_parameter('weight2', None)
         else:
@@ -42,7 +40,6 @@ class GCNII(Module):
             out2 = self.alpha * x_0
             out2 = (1 - self.beta) * out2 + self.beta * (out2 @ self.weight2)
             out = out1 + out2
-
         return out
 
 
