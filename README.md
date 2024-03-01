@@ -15,10 +15,15 @@ python main.py
 ### Requirements
 
 python == 3.7.8
+
 pytorch == 1.10.2
+
 numpy == 1.21.6
+
 pandas==1.3.5
+
 scikit-learn==0.20.0
+
 snfpy==0.2.2
 
 
