@@ -2,6 +2,8 @@
 
 ![framework](./Framework.png)
 
+This the code for paper "DeepMoIC: multi-omics data integration via deep graph convolutional networks for cancer subtype classification".
+
 ### Quick start
 
 ```
