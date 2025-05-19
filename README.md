@@ -8,12 +8,6 @@
 git clone git@github.com:JiechengWu/DeepMoIC.git
 ```
 
-Get the fusion feature and PSN_adj:
-```
-python AE_run.py
-python SNF_run.py
-```
-
 Unzip the data in the data and results, then if you want to run the classification task：
 ```
 python main.py --dataset BRCA -wd 0.01 -lr 0.001 -dp 0.3 -p 20 --layer 20
@@ -21,6 +15,11 @@ python main.py --dataset KIPAN -wd 0.001 -lr 0.005 -dp 0.3 -p 20 --layer 16
 python main.py --dataset LGG -wd 0.01 -lr 0.001 -dp 0.4 -p 50 --layer 8
 ```
 
+Get the fusion feature and PSN_adj by:
+```
+python AE_run.py
+python SNF_run.py
+```
 
 ### Requirements
 
